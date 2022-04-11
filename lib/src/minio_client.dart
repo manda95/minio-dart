@@ -150,6 +150,7 @@ class MinioClient {
       'user-agent': userAgent,
       'x-amz-date': makeDateLong(date),
       'x-amz-content-sha256': sha256sum,
+      if(minio.sessionToken != null) 'x-amz-security-token': minio.sessionToken!
     });
 
     final authorization = signV4(minio, request, date, region);
